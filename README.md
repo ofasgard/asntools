@@ -2,6 +2,8 @@
 
 Some simple utilities that use the [ipwhois](https://pypi.org/project/ipwhois/) module to look up ASN data associated with a target or targets. I wrote these scripts to help automate some OSINT and validation tasks, making it easier to check the provenance of a host or find associated hosts.
 
+![screenshot of the tool in action](readme/screenshot.png)
+
 All tools in this repository produce output in JSONL format. Use tools like `jq` to parse the output programmatically. For example, to extract a list of unique ASNs associated with a target list:
 
 ```sh
