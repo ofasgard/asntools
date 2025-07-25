@@ -38,7 +38,9 @@ $ echo "8.8.8.8" | asncheck | jq -r .cidr | cidrexpand
 
 ## Subnet Enumeration
 
-When you enumerate an ASN with `asncheck`, you might get a very large range such as a /16. If this ASN is owned by the organisation you want to target, this is great and your work can end here. Often, however, the ASN you get is owned by a hosting provider or ISP. In some cases, there are more specific subnets within this range that have their own ASN designations.
+When you enumerate an ASN with `asncheck`, you might get a very large range such as a /16. If this ASN is owned by the organisation you want to target, this is great and your work can end here. 
+
+Often, however, the ASN you get is owned by a hosting provider or ISP. In some cases, there are more specific subnets within this range that have their own ASN designations.
 
 You can use the tools in this repository to enumerate an ASN by bruteforce, looking for subnets with their own designation:
 
