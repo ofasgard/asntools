@@ -27,3 +27,12 @@ Retrieves the AS number for one or more hostnames or IP addresses, then expands 
 $ echo "8.8.8.8" | asnexpand
 $ cat targets.txt | asnexpand
 ```
+
+## cidrexpand
+
+A helper tool that expands the CIDR ranges from `asncheck` or `asnexpand` into a full list of IP addresses.
+
+```sh
+$ echo "8.8.8.8" | asncheck | jq -r .cidr | cidrexpand
+```
+
