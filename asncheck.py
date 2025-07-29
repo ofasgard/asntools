@@ -29,6 +29,24 @@ def ip_to_networks(ip):
 		return results["nets"]
 	except ipwhois.exceptions.IPDefinedError:
 		return []
+		
+def ip_to_comments(ip):
+	try:
+		query = ipwhois.IPWhois(ip)
+		results = query.lookup_rdap()
+		
+		if results["objects"] is None:
+			return []
+			
+		output = []
+		for item in results["objects"].values():
+			if item["remarks"] is not None:
+			 for remark in item["remarks"]:
+			 	output.append(remark["description"])
+		return list(set(output))
+
+	except ipwhois.exceptions.IPDefinedError:
+		return []
 
 
 if __name__ == "__main__":
@@ -39,6 +57,7 @@ if __name__ == "__main__":
 			continue
 
 		nets = ip_to_networks(ip)
+		
 		for net in nets:
 			output = {}
 			output["host"] = host.strip()
@@ -47,4 +66,5 @@ if __name__ == "__main__":
 			output["cidr"] = net["cidr"]
 			output["range"] = net["range"]
 			output["contacts"] = net["emails"]
+			output["comments"] = ip_to_comments(ip)
 			print(json.dumps(output))
