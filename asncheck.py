@@ -46,4 +46,5 @@ if __name__ == "__main__":
 			output["asn"] = net["description"]
 			output["cidr"] = net["cidr"]
 			output["range"] = net["range"]
+			output["contacts"] = net["emails"]
 			print(json.dumps(output))
